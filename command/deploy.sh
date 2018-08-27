@@ -1,7 +1,7 @@
 SCRIPT_DIR=`dirname $0`
 cd $SCRIPT_DIR
 
-BRANCH=develop
+BRANCH=$1
 
 cd ../docker
 docker-compose stop
