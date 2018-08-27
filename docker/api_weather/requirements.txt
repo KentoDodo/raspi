@@ -1,0 +1,5 @@
+flask>=1.0.2
+Flask-Bootstrap4>=4.0.2
+Flask-Cors>=3.0.6
+requests>=2.19.1
+python-dateutil>=2.7.3

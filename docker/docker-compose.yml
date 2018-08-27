@@ -1,0 +1,73 @@
+version: "3"
+
+services:
+
+  web-kiosk:
+    build: ./web_kiosk
+    container_name: raspi_web_kiosk
+    command: python run.py
+    environment:
+      API_TEMPERATURE_PORT: 3010
+      API_TRAIN_PORT: 3020
+      API_WEATHER_PORT: 3030
+    links:
+      - api-temperature
+      - api-train
+      - api-weather
+    ports:
+      - 80:80
+    working_dir: /web_kiosk
+    volumes:
+      - ../src/web_kiosk:/web_kiosk
+
+  api-temperature:
+    build: ./api_temperature
+    container_name: raspi_api_temperature
+    command: python run.py
+    environment:
+      DEBUG: 1
+      VERSION: "1.0"
+    ports:
+      - 3010:80
+    privileged: true
+    working_dir: /api_temperature
+    volumes:
+      - ../src/api_temperature:/api_temperature
+      - /sys/bus/w1/devices/:/sys/bus/w1/devices/
+
+  api-train:
+    build: ./api_train
+    container_name: raspi_api_train
+    command: python run.py
+    environment:
+      DEBUG: 1
+      VERSION: "1.0"
+      DB_HOST: api-train-db
+      DB_PORT: 27017
+    links:
+      - api-train-db
+    ports:
+      - 3020:80
+    working_dir: /api_train
+    volumes:
+      - ../src/api_train:/api_train
+
+  api-train-db:
+    build: ./api_train_db
+    container_name: raspi_api_train_db
+    volumes:
+      - ../src/api_train_db/db:/data/db
+
+  api-weather:
+    build: ./api_weather
+    container_name: raspi_api_weather
+    command: python run.py
+    environment:
+      DEBUG: 1
+      VERSION: "1.0"
+      API_WEATHER_PORT: 3030
+    ports:
+      - 3030:80
+    working_dir: /api_weather
+    volumes:
+      - ../src/api_weather:/api_weather

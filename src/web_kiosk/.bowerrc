@@ -1,0 +1,5 @@
+{
+    "allow_root": true,
+    "directory": "static/js/components",
+    "json": "bower.json"
+}

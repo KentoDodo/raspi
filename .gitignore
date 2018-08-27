@@ -1,0 +1,10 @@
+.DS_Store
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+sftp-config.json
+_sftp-config.json
+
+!.gitkeep

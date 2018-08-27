@@ -1,0 +1,40 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Temperature{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1 class="display-4">Temperature: <span id="temperature" class="display-1">--.-</span> ℃</h1>
+        <h1 class="display-4">Temperature2: <span id="temperature2" class="display-1">--.-</span> ℃</h1>
+        <h1 class="display-4">Humidity: <span id="humidity" class="display-1">--.-</span> %</h1>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+    function getTemperatureData() {
+        var temperatureData;
+        $.ajaxSetup({ async: false });
+        $.getJSON("api/temperature", null, function(data, status) {
+            temperatureData = data;
+        });
+        $.ajaxSetup({ async: true });
+        return temperatureData;
+    }
+
+    function updateTemperature() {
+        temperatureData = getTemperatureData();
+        if (temperatureData.temperature) $("#temperature").html(temperatureData.temperature.toFixed(1));
+        if (temperatureData.temperature) $("#temperature2").html(temperatureData.temperature2.toFixed(1));
+        if (temperatureData.humidity) $("#humidity").html(temperatureData.humidity.toFixed(0));
+    }
+
+    $(function() {
+        updateTemperature();
+        setInterval(updateTemperature, 5000);
+    });
+</script>
+{% endblock  %}

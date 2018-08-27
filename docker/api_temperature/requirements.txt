@@ -1,0 +1,4 @@
+flask>=1.0.2
+rpi.gpio>=0.6.3
+Flask-Bootstrap4>=4.0.2
+Flask-Cors>=3.0.6

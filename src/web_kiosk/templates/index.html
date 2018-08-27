@@ -1,0 +1,44 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Kiosk on Raspi{% endblock %}
+
+{% block metas %}
+{{ super() }}
+<!-- if debug -->
+<!-- <meta http-equiv="refresh" content="12"> -->
+{% endblock %}
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="/static/js/components/components-font-awesome/css/fontawesome-all.min.css">
+{% endblock %}
+
+{% block body_attribs %} class="bg-secondary"{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row mx-0">
+        <div class="col-6">
+            <div id="clockView"></div>
+            <!-- <div id="trainDepartureView"></div> -->
+            <div id="temperatureGraphView"></div>
+            
+        </div>
+        <div class="col-6">
+            <div id="temperatureView"></div>
+            <div id="jmaRadarView"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+    const apiPorts = {{ api_ports | tojson }};
+</script>
+<script src="/static/js/components/moment/min/moment.min.js"></script>
+<script src="/static/js/components/chart.js/dist/Chart.min.js"></script>
+<script src="/static/js/components/chartjs-plugin-streaming/dist/chartjs-plugin-streaming.min.js"></script>
+<script src="/static/js/index.js" type="module"></script>
+{% endblock  %}
