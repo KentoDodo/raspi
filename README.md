@@ -33,3 +33,10 @@ Example: install `jquery`
 ```
 $ docker-compose run web-kiosk bower install jquery --save
 ```
+
+
+# How to deploy
+
+```
+$ ssh pi sh /home/pi/scripts/raspi/command/deploy.sh develop
+```
