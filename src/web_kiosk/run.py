@@ -22,7 +22,8 @@ def index():
 
 @app.route("/kiosk/off", methods=['GET'])
 def kiosk_off():
-    os.system('export DISPLAY=:0.0 && xdotool key ctrl+w')
+    os.environ["DISPLAY"] = ":0.0"
+    os.system('xdotool key ctrl+w')
     return jsonify({
         "success": True
     }), 200
