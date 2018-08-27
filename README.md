@@ -2,16 +2,26 @@
 
 Containers on Raspberry Pi
 
-
 ## Needs libraries
 * docker
 * docker-compose
 * xdotool
   * memo: update chrome(kiosk): `export DISPLAY=:0.0 && xdotool key ctrl+F5`
 
+## How to deploy
+```
+$ ssh pi sh /home/pi/scripts/raspi/command/deploy.sh develop
+```
+
+## Run when first time
+```
+$ ssh pi docker-compose -f /home/pi/scripts/raspi/docker/docker-compose.yml run api-train python util/get_departure.py
+```
+
+
+# For developing
 
 ## Usage
-
 ```
 $ cd docker
 $ docker-compose build
@@ -24,19 +34,9 @@ $ docker-compose up -d
 $ chromium-browser --noerrdialogs --kiosk --incognito http://localhost/
 ```
 
-
-# For developing
-
 ## Install new js libraries to web for testing
 
 Example: install `jquery`
 ```
 $ docker-compose run web-kiosk bower install jquery --save
-```
-
-
-# How to deploy
-
-```
-$ ssh pi sh /home/pi/scripts/raspi/command/deploy.sh develop
 ```
