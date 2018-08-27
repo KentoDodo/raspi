@@ -11,7 +11,7 @@ git pull origin ${BRANCH}
 cd docker
 docker-compose build
 docker-compose run web-kiosk bower install
-docker-compose up -d
+docker-compose up -d --force-recreate
 
 export DISPLAY=:0.0 && xdotool key ctrl+F5
 

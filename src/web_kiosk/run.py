@@ -29,7 +29,7 @@ def kiosk_off():
 
 
 @app.route("/kiosk/on", methods=['GET'])
-def kiosk_off():
+def kiosk_on():
     os.system('chromium-browser --noerrdialogs --kiosk --incognito http://localhost/')
     return jsonify({
         "success": True
