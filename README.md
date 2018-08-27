@@ -6,7 +6,7 @@ Containers on Raspberry Pi
 * docker
 * docker-compose
 * xdotool
-  * memo: update chrome(kiosk): `export DISPLAY=:0.0 && xdotool key ctrl+F5`
+  * example: update chrome(kiosk), `export DISPLAY=:0.0 && xdotool key ctrl+F5`
 
 ## How to deploy
 ```

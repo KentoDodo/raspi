@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify, render_template
 from flask_bootstrap import Bootstrap
 
@@ -17,6 +18,22 @@ def index():
         "weather": API_WEATHER_PORT
     })
     return html
+
+
+@app.route("/kiosk/off", methods=['GET'])
+def kiosk_off():
+    os.system('export DISPLAY=:0.0 && xdotool key ctrl+w')
+    return jsonify({
+        "success": True
+    }), 200
+
+
+@app.route("/kiosk/on", methods=['GET'])
+def kiosk_off():
+    os.system('chromium-browser --noerrdialogs --kiosk --incognito http://localhost/')
+    return jsonify({
+        "success": True
+    }), 200
 
 
 if __name__ == "__main__":
