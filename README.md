@@ -40,3 +40,20 @@ Example: install `jquery`
 ```
 $ docker-compose run web-kiosk bower install jquery --save
 ```
+
+## control GUI on raspi from CUI
+
+Open kiosk
+```
+$ chromium-browser --noerrdialogs --kiosk --incognito http://localhost/ &
+```
+
+Update kiosk
+```
+$ export DISPLAY=:0.0 && xdotool key ctrl+f5
+```
+
+Close kiosk
+```
+$ export DISPLAY=:0.0 && xdotool key ctrl+w
+```

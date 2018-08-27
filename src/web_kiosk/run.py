@@ -20,22 +20,5 @@ def index():
     return html
 
 
-@app.route("/kiosk/off", methods=['GET'])
-def kiosk_off():
-    os.environ["DISPLAY"] = ":0.0"
-    os.system('xdotool key ctrl+w')
-    return jsonify({
-        "success": True
-    }), 200
-
-
-@app.route("/kiosk/on", methods=['GET'])
-def kiosk_on():
-    os.system('chromium-browser --noerrdialogs --kiosk --incognito http://localhost/')
-    return jsonify({
-        "success": True
-    }), 200
-
-
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
