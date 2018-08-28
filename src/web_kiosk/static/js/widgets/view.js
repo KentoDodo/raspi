@@ -1,5 +1,10 @@
 export default class View {
     constructor(jq, updateInterval, htmlPath, params) {
+        var t = this;
+        setTimeout(function(){t._constructor(jq, updateInterval, htmlPath, params)}, 0);
+    }
+
+    _constructor(jq, updateInterval, htmlPath, params) {
         this._setParams(params);
         this.init();
         this._loadHtml(jq, htmlPath);

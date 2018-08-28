@@ -64,14 +64,14 @@ export default class TrainDepartureView extends View {
     getTrainDeparturesData() {
         if (!this.trainDepartures) {
             var t = this;
-            $.getJSON("http://raspberrypi.local:" + this.apiPorts.train + "/api/departure", null, function(data, status) {
+            $.getJSON("http://" + window.location.hostname + ":" + this.apiPorts.train + "/api/departure", null, function(data, status) {
                 t.trainDepartures = data;
             });
         }
 
         var _trainDeparturesData = [];
         for (var i in this.trainDepartures) {
-            $.getJSON("http://raspberrypi.local:" + this.apiPorts.train + "/api/departure/" + this.trainDepartures[i]._id, null, function(data, status) {
+            $.getJSON("http://" + window.location.hostname + ":" + this.apiPorts.train + "/api/departure/" + this.trainDepartures[i]._id, null, function(data, status) {
                 _trainDeparturesData.push(data);
             });
         }

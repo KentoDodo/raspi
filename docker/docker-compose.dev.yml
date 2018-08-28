@@ -1,0 +1,9 @@
+version: "3"
+
+  web-kiosk:
+    ports:
+      - 80:80
+
+  api-temperature:
+    volumes:
+      - /sys/bus/w1/devices/:/sys/bus/w1/devices/

@@ -100,7 +100,7 @@ export default class TemperatureGraphView extends View {
 
     update() {
         var t = this;
-        $.getJSON("http://raspberrypi.local:" + this.apiPorts.temperature + "/api/temperature", null, function(data, status) {
+        $.getJSON("http://" + window.location.hostname + ":" + this.apiPorts.temperature + "/api/temperature", null, function(data, status) {
             t.setTemperatureData(data);
         });
     }

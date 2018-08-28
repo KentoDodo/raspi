@@ -8,7 +8,7 @@ export default class JmaRadarView extends View {
 
     update() {
         var t = this;
-        $.getJSON("http://raspberrypi.local:" + this.apiPorts.weather + "/api/jma_radar", null, function(data, status) {
+        $.getJSON("http://" + window.location.hostname + ":" + this.apiPorts.weather + "/api/jma_radar", null, function(data, status) {
             t.setJmaRararData(data);
         });
     }

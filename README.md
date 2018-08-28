@@ -26,7 +26,7 @@ $ ssh pi docker-compose -f /home/pi/scripts/raspi/docker/docker-compose.yml run 
 $ cd docker
 $ docker-compose build
 $ docker-compose run web-kiosk bower install
-$ docker-compose up -d
+$ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 ```
 
 ## Start up kiosk

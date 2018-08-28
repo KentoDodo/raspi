@@ -1,7 +1,6 @@
 version: "3"
 
 services:
-
   web-kiosk:
     build: ./web_kiosk
     container_name: raspi_web_kiosk
@@ -14,8 +13,6 @@ services:
       - api-temperature
       - api-train
       - api-weather
-    ports:
-      - 80:80
     working_dir: /web_kiosk
     volumes:
       - ../src/web_kiosk:/web_kiosk
@@ -33,7 +30,6 @@ services:
     working_dir: /api_temperature
     volumes:
       - ../src/api_temperature:/api_temperature
-      - /sys/bus/w1/devices/:/sys/bus/w1/devices/
 
   api-train:
     build: ./api_train

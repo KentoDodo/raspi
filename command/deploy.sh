@@ -11,7 +11,7 @@ git pull origin ${BRANCH}
 cd docker
 docker-compose build
 docker-compose run web-kiosk bower install
-docker-compose up -d --force-recreate
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --force-recreate
 
 sleep 5
 
